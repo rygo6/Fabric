@@ -5,16 +5,24 @@
 # Fabric
 
 ## What?
-Fabric is a design of the software foundation for the Metaverse.
 
-There currently exists a problem with the notion of the Metaverse, in that no software exists to support what it needs to become. No existing game engine, nor the web browser functions as it needs to. As all existing software foundations were conceived of with a screen-based mentality in their architecture and this is baked into everything to a root level. To properly support a spatial social space such as the Metaverse, you need to re-think the architecture of such a platform from the ground up on the presumption that different pieces of content will not be separate rectangles on a 2D screen, but will be separate 3D forms in a 3D space.
+Fabric is a low-level piece of tech intended to fill a gap in existing technology stacks that has emerged out of the evolving VR Metaverse use cases that is observable in platforms like VRChat, ChilloutVR, NeosVR, AltSpaceVR etc.
 
-It may appear like this already exists, obviously we have so many 3D games, 3D game engines, and WebGL. The problem however is when we are talking about a rectangle on a 2D screen for a different application, at a technical level, we are also talking about a separate OS process and a separate chunk of OS virtualized memory for the application in that 2D rectangle. Different 2D applications are different processes on an OS, so if one 2D applications crashes, it does not take down all other 2D applications with it.
+The problem which Fabric aims to solve is the enabling of users in a networked virtual space to be able to stream any content, from any source, of any quality, even malicious content, and then not have said content crash, nor even disrupt, the end-user experience for anyone else who is also in that networked space. So for instance, if some user loaded in a poorly performing avatar into a virtual space, only that avatar would run at a low framerate, not effecting the framerate of any other content in the virtual space. If someone loaded in a shader on an avatar that was malicious and could crash users, only that avatar would crash, leaving the rest of virtual space and runtime unaffected.
 
-However, when we come to create 3D platforms, and we are talking one 3D form in a 3D space, be it an object, a world, or a player, that 3D form is not its own OS process, nor its own chunk of OS virtualized memory. Rather, currently, in all existing 3D platforms, every 3D form in a 3D space is sharing the same OS process and the same chunk of OS virtualized memory. If one 3D form in a 3D space in an existing 3D game engine has problem, it disrupts the performance of every other 3D form being displayed. If one 3D form in a 3D space crashes, it will crash the entire 3D space, because they are all the same process.
+Fabric is a solution to low-level security issues concerning user-generated-content in networked 3D platforms.
 
-Fabric is a design to enable separate 3D forms in the same 3D space to be separate OS processes, with their own separate chunk of virtualized memory. So if one 3D form crashes, or is slow, in a 3D space, only that 3D form is negatively affected.
+The purpose of Fabric is to implement security at the lowest level of wherever something can be exploited. Fabric does not mask, obfuscate nor omit high-level functionality to create such security. Such as blocking custom shaders, or custom code. Rather, it creates security by designing it in such a way where malicious content simply cannot be malicious, by appropriately sandbox everything related to the CPU and GPU. This is similar to what a Web Browser does, but Fabric takes it much further pertaining to 3D rendered content as it deals with potentially slow, or malicious, 3D content that could disrupt the entire 3D render context.
 
-Technically this draws parallels to some implementations you can see in VR Compositor applications, like SteamVR Overlays. Fabric is a design to take it much farther, where separate processes don't just enable a different overlay on another application, but rather separate processes driving 3D content can co-exist in a 3D space interacting with each other through an IPC. So then complex 3D worlds with complex 3D interaction can be created where separate pieces of 3D content are truly technically independent, down to the OS level, akin to how 2D applications are on a screen.
+Fabric is a runtime that sits somewhere around the position of a VR Compositor, a windowing system (Wayland), OpenXR, an Operating System Shell or a Web Browser.
+
+Fabric is neither any of those specific things, but rather it sits in a comparable position in the technology stack or should be seen in that category of technology.
+
+Examples:
+- Fabric is not itself a game engine, nor a Social VR application but someone could build an engine capable of supporting all things for a Social VR application on top of it, akin to how you could build a Social VR application on top of the SteamVR Compositor or Google Chrome.
+- Fabric functions like a VR compositor in that it can composite the output of many processes together, but it is not itself a generic VR compositor, as it has baked into it many assumptions about the type of content that disallow it from being a general purpose VR compositor.
+- Fabric can be a build target for VR experiences akin to OpenXR, but it is not entirely a replacement for OpenXR, but rather a layer on top that enforces very specific paradigms about how content is to be made to run on it. Someone creating a generalized standalone VR application or game would still want to use only OpenXR.
+- Fabric has baked into it Operating-System-Shell-like functionality such as basic UI for system control and interaction, but is not itself an entire replacement for an Operating System Shell. It would only deal with 3D spatial functionality.
+- Fabric is like a Web Browser in that it is built off many pieces of Web tech, and it's primary purpose is the full sandboxing of any content streamed into it, but it is not itself a replacement for a web browser.
 
 ## Why?
