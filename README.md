@@ -70,3 +70,13 @@ It is far more appropriate to view Fabric more in the vein of a 3D operating sys
 However, Fabric is something quite different from existing Operating Systems due to its inherent 3D nature. In a 2D operating system rectangles floating on a screen that do not talk to each other is sufficient, but in a 3D world separate pieces of 3D content are expected to be able to affect each other. Where a traditional OS would be more concerned with the API/ABI of the lower level kernel and hardware Fabric is more concerned with how processes can affect each other's state and co-exist in a 3D space.
 
 Fabric could at some point be a kind of OS Shell. This project https://github.com/evil0sheep/motorcar from 2015 I see to be of a similar intent of Fabric where Wayland itself was altered to allow application windows and 3D objects to be rendered in a 3D space. However, the additional unique quality of Fabric is that it also intends to be a kind of 3D Web Browser. To enable the streaming of sandboxed 3D content from other users, and allow multiple users to exist in a space simultaneously streaming their 3D content to each other.
+
+## Expiriments
+
+### FabricNode-Wasmtime-ANGLE
+
+https://github.com/rygo6/FabricNode-Wasmtime-ANGLE
+
+One potential architectural approach was to have a "Child Process" be a standalone WebAssembly VM that would directly output WebGL calls. The above repo explores the viability of this by placing the Wasmtime VM on top of Google Angle and rendering a basic triangle from a WASM binary by sending its memory and WebGL calls directly to Google Angle. This might hold some promise of potentially rendering WASM + WebGL content more performantly than how browsers currently must pipe everything through a Javscript interop.
+
+Current thinking however is that child processes should be explicitly limited to WASM and WebGL. There are potential sandboxing techniques that would be more permissive.
