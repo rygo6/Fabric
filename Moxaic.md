@@ -1,6 +1,4 @@
-# Moxaic
-
-A 'Metaverse Browser' or a 'Social Spatial Browser.'
+# A 'Metaverse Browser' or a 'Social Spatial Browser.'
 
 ## Sandboxing vs Walled Garden
 
@@ -338,4 +336,5 @@ User avatars could be rendered in a Godot or Unity process locally with the trad
 User interfaces could be rendered in the baseline 3D DOM.
 
 This notion will be increasingly important with mobile HMD devices which tend to have strict power and battery constraints that are diffucul to stay within.
+
 
